@@ -156,6 +156,172 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-静态方案的决解方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本次教程主要是来教会大家怎么样从0到1搭建自己的个人博客，一步一步带你。</p>
+<ul>
+<li>搭建环境</li>
+<li>初始化个人博客</li>
+<li>写博客</li>
+<li>部署远端</li>
+<li>更换博客主题</li>
+</ul>
+</blockquote>
+<p>在这里，我先说一下关于写博客的好处。不论你是哪所大学毕业，也不论你是研究生毕业还是博士毕业，在找工作的时候都少不了一份简历。简历上面有自己的个人博客会大大加分。</p>
+<p>之前在学校的时候很多师兄师姐们都找不到工作，或者是很容易就被刷了下来。原因是什么呢？除开个人对本职工作的知识是否扎实，你的leader能力、博客等等这些都是很重要，很多人往往都会忽略这些事情，导致面试的前一晚才开始准备自己的简历。</p>
+<p>大家都知道在高考前要提前100天发起冲刺，在单元考试前要提前一个星期去复习，那你为什么在面试前一晚在做准备呢？</p>
+<p>所以我在这边就来带领大家，一步一步把这博客给搭建好，为了大家的面试可以加分，也希望大家可以形成写博客的习惯。</p>
+<h1 id="一、主流博客框架介绍"><a href="#一、主流博客框架介绍" class="headerlink" title="一、主流博客框架介绍"></a>一、主流博客框架介绍</h1><p>现在主流的博客框架有哪些呢？</p>
+<ul>
+<li>Wordpress</li>
+<li>Hexo</li>
+<li>Jekyll</li>
+<li>Hugo</li>
+</ul>
+<h2 id="1-1-Wordpress"><a href="#1-1-Wordpress" class="headerlink" title="1.1 Wordpress"></a>1.1 Wordpress</h2><p>Wordpress是一个基于php，用来搭建动态的博客的CMS系统。wordpress也是一个开源的，可以使用wordpress来制作网站，或者是app。wordpress这个框架还是比较成熟的，使用的人也比较多，根据官网统计全球有38%的网站使用的都是wordpress。</p>
+<p>wordpress框架主要的作用是做新闻网站和博客网站，照这样分析，可以说是所有该类型的网站使用的都是wordpress框架。wordpress的文档特别丰富，我最近去看的时候发现wordpress的汉化已经比较全面了。</p>
+<h2 id="1-2-Hexo"><a href="#1-2-Hexo" class="headerlink" title="1.2 Hexo"></a>1.2 Hexo</h2><p>Hexo是基于js，是一款快速、简洁且高效的博客框架。Hexo支持markdown，这一点对于程序员来说是比较友好的，比如像我们写文档基本上用的都是markdown。</p>
+<p>Hexo部署起来是非常方便的，5行命令就部署完了。可以部署到github、码云或是是云主机。</p>
+<h2 id="1-3-jekyllrb"><a href="#1-3-jekyllrb" class="headerlink" title="1.3 jekyllrb"></a>1.3 jekyllrb</h2><p>jekyllrb是基于ruby，同样也是一个静态网站生成器，它的使用与Hexo的使用方法很像，也是很简单的博客框架。</p>
+<h2 id="1-4-hugo"><a href="#1-4-hugo" class="headerlink" title="1.4 hugo"></a>1.4 hugo</h2><p>hugo是基于go语言的，hugo在安装、创建新的页面、更换主题等的操作也是很方便，同样，几行命令就可以搞定。</p>
+<h1 id="二、hexo框架的使用"><a href="#二、hexo框架的使用" class="headerlink" title="二、hexo框架的使用"></a>二、hexo框架的使用</h1><p>hexo框架还是比较简单的，基本的使用说明在官方文档里面都是有详细说明的。但是为什么还是要写这一块呢？原因是在配置环境的时候我踩了几个坑，所以不希望后来的小伙伴做博客的时候也踩相同的坑</p>
+<h2 id="2-1-安装node-js"><a href="#2-1-安装node-js" class="headerlink" title="2.1 安装node.js"></a>2.1 安装node.js</h2><p>前面介绍hexo的时候说过，hexo是基于js的，安装node.js是为了快速渲染界面。</p>
+<p>安装node.js的时候，我看很多教程要么就直接通过下载安装包安装或者直接==<code>apt-get install nodejs</code>==</p>
+<p>这样安装的话，很难去控制版本，注定只能去安装这个版本，一但要更新版本的话，迁移代码的工作量是非常大的。那么怎么办呢？</p>
+<p>经过看官方文档，我觉得最合理的方式是通过npm包管理器进行安装时最方便管理，以后只需要通过npm命令进行升级即可，并不会覆盖原来的配置。</p>
+<p>==安装node.js==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Using Ubuntu</span><br><span class="line">curl -sL https:&#x2F;&#x2F;deb.nodesource.com&#x2F;setup_12.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+
+<p>因为我的电脑版本使用的是Ubuntu，具体可以查看<a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions/blob/master/README.md">node.js安装参考</a>安装</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><ul>
+<li>windows：下载并扮装git<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git</a></li>
+<li>mac：<a target="_blank" rel="noopener" href="http://www.macports.org/">Homebrew</a>,<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/git-osx-installer/">MacPorts</a>或者直接下载<a target="_blank" rel="noopener" href="http://mxcl.github.io/homebrew/">安装程序</a></li>
+<li>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code></li>
+<li>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code></li>
+</ul>
+<p>在安装git之后应该先配置好ssh，你总不能自己去上传每一个写好的文章吧。详细配置请参考<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/1035/learning/?id=9816">SSH关联授权</a></p>
+<h1 id="三、hexo框架的部署"><a href="#三、hexo框架的部署" class="headerlink" title="三、hexo框架的部署"></a>三、hexo框架的部署</h1><h2 id="4-1-安装hexo"><a href="#4-1-安装hexo" class="headerlink" title="4.1 安装hexo"></a>4.1 安装hexo</h2><p>将hexo的配置环境都安装好了之后,接下来就是安装hexo了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g	</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>npm install hexo-cli -g    </code>   ==安装hexo==</li>
+<li><code>hexo init blog</code> ==初始化hexo,并生成文件blog==</li>
+<li><code>cd blog</code> ==进入blog文件==</li>
+<li><code>npm install</code> ==在初始化时，出现错误时的解决方案==</li>
+<li><code>hexo server</code> ==运行hexo==</li>
+</ul>
+<h2 id="4-3-新建文章"><a href="#4-3-新建文章" class="headerlink" title="4.3 新建文章"></a>4.3 新建文章</h2><p><code>$ hexo new [layout] &lt;title&gt;</code></p>
+<p>如果你的标题存空格的话，需要用引号括起来</p>
+<p><code>hexo new &quot;post title with whitespace&quot;</code></p>
+<p>当这个命令运行之后，刚刚创建的文件会出现子在<code>blog/source/_post</code>下</p>
+<h2 id="4-12部署到github"><a href="#4-12部署到github" class="headerlink" title="4.12部署到github"></a>4.12部署到github</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/13/%E9%9D%99%E6%80%81%E6%96%B9%E6%A1%88%E7%9A%84%E5%86%B3%E8%A7%A3%E6%96%B9%E6%A1%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-主流博客框架介绍（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/13/%E4%B8%BB%E6%B5%81%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%EF%BC%88%E4%B8%80%EF%BC%89/">主流博客框架介绍（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/13/%E4%B8%BB%E6%B5%81%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-10-13T06:34:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/13/%E4%B8%BB%E6%B5%81%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
